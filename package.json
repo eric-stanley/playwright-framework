@@ -14,18 +14,22 @@
     "test:ui-testing-playground": "yarn workspace ui-testing-playground test",
     "test:debug:ui-testing-playground": "yarn workspace ui-testing-playground test:debug",
     "report:ui-testing-playground": "yarn workspace ui-testing-playground report",
-    "allure:ui-testing-playground": "yarn workspace ui-testing-playground allure"
+    "allure:ui-testing-playground": "yarn workspace ui-testing-playground allure",
+    "test:orange-hrm": "yarn workspace orange-hrm test",
+    "test:debug:orange-hrm": "yarn workspace orange-hrm test:debug",
+    "report:orange-hrm": "yarn workspace orange-hrm report",
+    "allure:orange-hrm": "yarn workspace orange-hrm allure"
   },
   "author": "Eric Stanley",
   "license": "MIT",
   "devDependencies": {
-    "@faker-js/faker": "^7.5.0",
-    "@playwright/test": "^1.25.2",
-    "allure-commandline": "^2.18.1",
-    "allure-playwright": "^2.0.0-beta.19",
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.42.1",
+    "allure-commandline": "^2.27.0",
+    "allure-playwright": "^2.13.0",
     "colors": "^1.4.0",
-    "playwright": "^1.25.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.3"
+    "playwright": "^1.42.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }

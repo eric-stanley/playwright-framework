@@ -15,4 +15,8 @@ export default class CommonPage {
   async waitForAnimationEnd(locator: string) {
     await actions.waitForAnimationEnd(this.page, locator);
   }
+
+  async waitForNetworkIdle() {
+    await actions.waitForNetworkIdle(this.page);
+  }
 }

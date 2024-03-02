@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
+    "target": "es2020",
+    "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "commonjs": "es2020",
     "baseUrl": ".",
     "paths": {
       /* Specify a set of entries that re-map imports to additional lookup locations. */

@@ -10,6 +10,19 @@ import {
 } from "@playwright/test/reporter";
 import colors from "colors";
 
+colors.setTheme({
+  silly: 'rainbow',
+  input: 'grey',
+  verbose: 'cyan',
+  prompt: 'grey',
+  info: 'green',
+  data: 'grey',
+  help: 'cyan',
+  warn: 'yellow',
+  debug: 'blue',
+  error: 'red'
+});
+
 process.env.FORCE_COLOR = "true";
 
 let totalTests = 0;
@@ -59,29 +72,28 @@ export default class CustomReporter implements Reporter {
     suiteStartTime = getFormattedTime();
     totalTests = suite.allTests().length;
     console.log(
-      `${getFormattedTime()}:`.bgCyan.black,
+      colors.help(`${getFormattedTime()}:`,
       ``,
-      `Starting the run with ${suite.allTests().length} tests`.underline.blue
-        .bold,
-      "\n"
+      colors.info(`Starting the run with ${suite.allTests().length} tests`),
+      "\n")
     );
   };
 
   onEnd = (result: FullResult): void | Promise<void> => {
     suiteEndTime = getFormattedTime();
     console.log(
-      `${getFormattedTime()}:`.bgCyan.black,
+      colors.verbose(`${getFormattedTime()}:`,
       ``,
-      `Finished the run with status`.underline.blue.bold,
+      colors.debug(`Finished the run with status`),
       result.status === "passed"
-        ? `${result.status}`.green.bold
-        : `${result.status}`.red.bold,
-      `\n\nOverall run duration: ${getDuration(suiteStartTime, suiteEndTime)}`
-        .yellow.bold
+        ? colors.info(`${result.status}`)
+        : colors.error(`${result.status}`),
+      colors.warn(`\n\nOverall run duration: ${getDuration(suiteStartTime, suiteEndTime)}`)
+      )
     );
   };
 
-  onError = (error: TestError): void => console.error(error.message.red);
+  onError = (error: TestError): void => console.error(colors.error(error));
 
   onStdErr = (
     chunk: string | Buffer,
@@ -89,8 +101,8 @@ export default class CustomReporter implements Reporter {
     result: void | TestResult
   ): void =>
     typeof chunk === "string"
-      ? console.log(chunk.red)
-      : console.log(chunk.toString().red);
+      ? console.log(colors.error(chunk))
+      : console.log(colors.error(chunk.toString()));
 
   onStdOut = (
     chunk: string | Buffer,
@@ -98,56 +110,56 @@ export default class CustomReporter implements Reporter {
     result: void | TestResult
   ): void =>
     typeof chunk === "string"
-      ? console.log(chunk.gray)
-      : console.log(chunk.toString().gray);
+      ? console.log(colors.data(chunk))
+      : console.log(colors.data(chunk.toString()));
 
   onStepBegin = (test: TestCase, result: TestResult, step: TestStep): void =>
     step.category === "test.step" &&
     console.log(
-      `${getFormattedTime()}:`.bgCyan.black,
-      ` Started step: ${step.title}`.magenta
+      colors.verbose(`${getFormattedTime()}:`,
+      colors.info(` Started step: ${step.title}`))
     );
 
   onStepEnd = (test: TestCase, result: TestResult, step: TestStep): void =>
     step.category === "test.step" &&
     console.log(
-      `${getFormattedTime()}:`.bgCyan.black,
-      ` Finished step: ${step.title}`.cyan
+      colors.verbose(`${getFormattedTime()}:`,
+      colors.info(` Finished step: ${step.title}`))
     );
 
   onTestBegin = (test: TestCase, result: TestResult): void => {
     testStartTime = getFormattedTime();
     console.log(
-      `Test ${i} of ${totalTests} - ${test.parent.title}`.yellow.bold
+      colors.warn(`Test ${i} of ${totalTests} - ${test.parent.title}`)
     );
     result.retry === 0
       ? console.log(
-          `${getFormattedTime()}:`.bgCyan.black,
+          colors.verbose(`${getFormattedTime()}:`,
           ` Started test`,
-          `${test.title}`.yellow
+          colors.warn(`${test.title}`))
         )
       : console.log(
-          `${getFormattedTime()}:`.bgCyan.black,
+          colors.verbose(`${getFormattedTime()}:`,
           ` Retrying test... (attempt ${result.retry} of ${test.retries})`,
-          `${test.title}`.yellow
+          colors.warn(`${test.title}`))
         );
   };
 
   onTestEnd = (test: TestCase, result: TestResult): void => {
     testEndTime = getFormattedTime();
     console.log(
-      `${getFormattedTime()}:`.bgCyan.black,
+      colors.verbose(`${getFormattedTime()}:`,
       ` Finished test`,
-      `${test.title}`.yellow,
+      colors.warn(`${test.title}`),
       `with status`,
       result.status === "passed"
-        ? `${result.status}`.green.bold
-        : `${result.status}`.red.bold,
-      `\n\nTest duration: ${getDuration(testStartTime, testEndTime)}\n`
+        ? colors.info(`${result.status}`)
+        : colors.error(`${result.status}`),
+      `\n\nTest duration: ${getDuration(testStartTime, testEndTime)}\n`)
     );
     if (result.status === "failed") {
-      console.log(stripAnsi(result.error?.message.red ?? ""));
-      console.log(stripAnsi(result.error?.stack.red ?? ""));
+      console.log(stripAnsi(colors.error(result.error?.message) ?? ""));
+      console.log(stripAnsi(colors.error(result.error?.stack) ?? ""));
     }
     if (result.status === "passed" || result.retry === 3) i++;
   };

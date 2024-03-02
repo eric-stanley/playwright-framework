@@ -47,10 +47,11 @@ export const takeScreenshot = async (
   await test.step(
     workerInfo.project.name + ": Capture screenshot to " + path,
     async () => {
-      await page.screenshot({
+      const screenshot = await page.screenshot({
         path: path,
         fullPage: fullPageFlag,
       });
+      await workerInfo.attach(path, { body: screenshot, contentType: 'image/png' });
     }
   );
 };

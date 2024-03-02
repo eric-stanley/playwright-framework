@@ -39,6 +39,17 @@ export const fill = async (
     async () => await page.fill(locator, text)
   );
 
+export const fillPwd = async (
+  page: Page,
+  locator: string,
+  text: string,
+  workerInfo: TestInfo
+) =>
+  await test.step(
+    workerInfo.project.name + ": Enter text: " + text.replace(/./g, '*'),
+    async () => await page.fill(locator, text)
+  );
+
 export const getInnerText = async (
   page: Page,
   locator: string,
@@ -258,6 +269,10 @@ export const getElementCoordinates = async (page: Page, locator: string) =>
   await page.locator(locator).boundingBox();
 
 export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+export const waitForNetworkIdle = (page: Page) => page.waitForLoadState('networkidle');
+
+export const waitForDocumentLoad = (page: Page) => page.waitForLoadState('domcontentloaded');
 
 export const waitForAnimationEnd = (page: Page, selector: string) =>
   page
