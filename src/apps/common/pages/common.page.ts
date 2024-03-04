@@ -33,6 +33,10 @@ export default class CommonPage {
     await actions.verifyElementDoesNotExists(this.page, locator, this.workerInfo);
   }
 
+  async verifyElementExists(locator: string) {
+    await actions.verifyElementExists(this.page, locator, this.workerInfo);
+  }
+
   async captureScreenshot(name: string) {
     await takeScreenshot(
       this.page, 
