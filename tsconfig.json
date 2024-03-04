@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "commonjs": "es2020",
+    // "commonjs": "es2020",
     "baseUrl": ".",
     "paths": {
       /* Specify a set of entries that re-map imports to additional lookup locations. */

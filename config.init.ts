@@ -2,7 +2,7 @@ import path from "path";
 
 export const initConfig = (appName: string) => {
   const configFile = path.join(
-    __dirname,
+    __dirname.toString(),
     "src",
     "apps",
     appName,

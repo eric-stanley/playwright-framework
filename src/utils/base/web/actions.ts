@@ -1,5 +1,6 @@
 import type { Page, TestInfo } from "@playwright/test";
 import { expect, test } from "@playwright/test";
+var _ = require('lodash');
 
 export const pressEnter = async (page: Page, workerInfo: TestInfo) =>
   await test.step(
@@ -150,6 +151,17 @@ export const clickLastElement = async (
     async () => await page.locator(locator).last().click()
   );
 
+export const clickNthElement = async (
+  page: Page,
+  locator: string,
+  index: number,
+  workerInfo: TestInfo
+) =>
+  await test.step(
+    workerInfo.project.name + ": Click nth element " + locator,
+    async () => await page.locator(locator).nth(index).click()
+  );
+
 export const javascriptClick = async (
   page: Page,
   locator: string,
@@ -298,3 +310,38 @@ export const elementHasClass = async (
         ? true
         : false
   );
+
+export const isJSONEqual = (
+  page: Page,
+  obj1, 
+  obj2,
+  workerInfo: TestInfo
+) => 
+  test.step(
+    workerInfo.project.name + ": Check if JSON objects are equal",
+    () => {
+      console.log("Expected: \n" 
+        + JSON.stringify(obj1, null, 2) + "\n\nActual: \n" 
+        + JSON.stringify(obj2, null, 2) + "\n\n");
+      return _.isEqual(obj1, obj2);
+    }
+  );
+
+export const deBounceDOM = async (page) => {
+    const pollDelay = 500;
+    const stableDelay = 1000;
+    let markupPrevious = '';
+    const timerStart = new Date();
+    let isStable = false;
+    while (!isStable) {
+        const markupCurrent = await page.evaluate(() => document.body.innerHTML);
+        if (markupCurrent == markupPrevious) {
+            const elapsed = new Date().getTime() - timerStart.getTime();
+            isStable = stableDelay <= elapsed;
+        } else {
+            markupPrevious = markupCurrent;
+        }
+        if (!isStable) await new Promise(resolve => setTimeout(resolve, pollDelay));
+    }
+};
+

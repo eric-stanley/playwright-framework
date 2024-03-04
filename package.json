@@ -8,21 +8,29 @@
   ],
   "scripts": {
     "test": "yarn workspace ui-testing-playground test",
+    "test:ui": "yarn workspace ui-testing-playground test:ui",
     "test:debug": "yarn workspace ui-testing-playground test:debug",
     "report": "yarn workspace ui-testing-playground report",
     "allure": "yarn workspace ui-testing-playground allure",
     "test:ui-testing-playground": "yarn workspace ui-testing-playground test",
+    "test::ui:ui-testing-playground": "yarn workspace ui-testing-playground test:ui",
     "test:debug:ui-testing-playground": "yarn workspace ui-testing-playground test:debug",
     "report:ui-testing-playground": "yarn workspace ui-testing-playground report",
     "allure:ui-testing-playground": "yarn workspace ui-testing-playground allure",
     "test:orange-hrm": "yarn workspace orange-hrm test",
+    "test:ui:orange-hrm": "yarn workspace orange-hrm test:ui",
     "test:debug:orange-hrm": "yarn workspace orange-hrm test:debug",
     "report:orange-hrm": "yarn workspace orange-hrm report",
-    "allure:orange-hrm": "yarn workspace orange-hrm allure"
+    "allure:orange-hrm": "yarn workspace orange-hrm allure",
+    "test:deriv-api": "yarn workspace deriv-api test",
+    "test:ui:deriv-api": "yarn workspace deriv-api test:ui",
+    "test:debug:deriv-api": "yarn workspace deriv-api test:debug",
+    "report:deriv-api": "yarn workspace deriv-api report",
+    "allure:deriv-api": "yarn workspace deriv-api allure"
   },
   "author": "Eric Stanley",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.42.1",
     "allure-commandline": "^2.27.0",
@@ -30,6 +38,8 @@
     "colors": "^1.4.0",
     "playwright": "^1.42.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.24",
+    "lodash": "^4.17.21"
   }
 }
