@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const normalize = require("./normalize");
+const normalize = require('./normalize');
 
-test.describe("Math/normalize", () => {
-  test("converts a numeical value from 0 to 1 indicating where it lies within a range of values", () => {
+test.describe('Math/normalize', () => {
+  test('converts a numeical value from 0 to 1 indicating where it lies within a range of values', () => {
     expect(normalize(23, 0, 33)).toBe(0.696969696969697);
 
     expect(normalize(23, 5, 33)).toBe(0.6428571428571429);
@@ -18,14 +18,14 @@ test.describe("Math/normalize", () => {
 
     expect(() => {
       return normalize(null, 0, 33);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
 
     expect(() => {
       return normalize(23, null, 33);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
 
     expect(() => {
       return normalize(23, 0, null);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
   });
 });

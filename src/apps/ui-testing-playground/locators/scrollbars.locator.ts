@@ -1,1 +1,1 @@
-export const hidingButton = "#hidingButton";
+export const hidingButton = '#hidingButton';

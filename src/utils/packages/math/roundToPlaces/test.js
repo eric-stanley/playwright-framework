@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const roundToPlaces = require("./roundToPlaces");
+const roundToPlaces = require('./roundToPlaces');
 
-test.describe("Math/roundToPlaces", () => {
-  test("rounds a number to a number of desired places", () => {
+test.describe('Math/roundToPlaces', () => {
+  test('rounds a number to a number of desired places', () => {
     const PI = Math.PI;
 
     expect(roundToPlaces(PI, 0)).toBe(3);
@@ -27,7 +27,7 @@ test.describe("Math/roundToPlaces", () => {
     expect(roundToPlaces(NaN, 2)).toBe(NaN);
 
     expect(() => {
-      return roundToPlaces("3.141592653589793", "2");
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+      return roundToPlaces('3.141592653589793', '2');
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
   });
 });

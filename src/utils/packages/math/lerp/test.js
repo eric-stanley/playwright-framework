@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const lerp = require("./lerp");
+const lerp = require('./lerp');
 
-test.describe("Math/lerp", () => {
-  test("converts a normalized value to the value that the normalized value points to", () => {
+test.describe('Math/lerp', () => {
+  test('converts a normalized value to the value that the normalized value points to', () => {
     expect(lerp(0.75, 0, 365)).toBe(273.75);
 
     expect(lerp(0.33, 100, 500)).toBe(232);
@@ -16,14 +16,14 @@ test.describe("Math/lerp", () => {
 
     expect(() => {
       return lerp(null, 0, 365);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
 
     expect(() => {
       return lerp(0.75, null, 365);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
 
     expect(() => {
       return lerp(0.75, 0, null);
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
   });
 });

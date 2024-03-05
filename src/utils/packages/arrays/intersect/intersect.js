@@ -38,7 +38,10 @@ const intersect = (...arrays) => {
         while (index < currentArray.length) {
           const currentElement = currentArray[index];
 
-          if (element === currentElement || Number.isNaN(element) && Number.isNaN(currentElement)) {
+          if (
+            element === currentElement ||
+            (Number.isNaN(element) && Number.isNaN(currentElement))
+          ) {
             return true;
           }
 

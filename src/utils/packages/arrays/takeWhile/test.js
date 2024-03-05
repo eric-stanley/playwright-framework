@@ -1,14 +1,14 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const takeWhile = require("./takeWhile");
+const takeWhile = require('./takeWhile');
 
-test.describe("Array/takeWhile", () => {
-  test("creates a slice of array with elements taken from the beginning, until predicate returns falsy", () => {
+test.describe('Array/takeWhile', () => {
+  test('creates a slice of array with elements taken from the beginning, until predicate returns falsy', () => {
     const books = [
-      { title: "Javascript Design Patterns", read: false },
-      { title: "Programming Javascript Applications", read: false },
-      { title: "JavaScript The Good Parts", read: true },
-      { title: "Eloquent Javascript", read: false },
+      { title: 'Javascript Design Patterns', read: false },
+      { title: 'Programming Javascript Applications', read: false },
+      { title: 'JavaScript The Good Parts', read: true },
+      { title: 'Eloquent Javascript', read: false },
     ];
 
     const firstUnread = takeWhile(books, (book) => {
@@ -20,21 +20,21 @@ test.describe("Array/takeWhile", () => {
     });
 
     expect(firstUnread).toEqual([
-      { title: "Javascript Design Patterns", read: false },
-      { title: "Programming Javascript Applications", read: false },
+      { title: 'Javascript Design Patterns', read: false },
+      { title: 'Programming Javascript Applications', read: false },
     ]);
 
     expect(firstRead).toEqual([]);
 
     expect(() => {
       return takeWhile({
-        title: "Javascript Design Patterns",
+        title: 'Javascript Design Patterns',
         read: false,
       });
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
 
     expect(() => {
       return takeWhile(books, null);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
   });
 });

@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isWeakMap = require("./isWeakMap");
+const isWeakMap = require('./isWeakMap');
 
-test.describe("is/isWeakMap", () => {
-  test("checks if a value is WeakMap", () => {
+test.describe('is/isWeakMap', () => {
+  test('checks if a value is WeakMap', () => {
     expect(isWeakMap(new WeakMap())).toBe(true);
 
     expect(isWeakMap([])).toBe(false);
@@ -14,6 +14,6 @@ test.describe("is/isWeakMap", () => {
 
     expect(isWeakMap(null)).toBe(false);
 
-    expect(isWeakMap("foo")).toBe(false);
+    expect(isWeakMap('foo')).toBe(false);
   });
 });

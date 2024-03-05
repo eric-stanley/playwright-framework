@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const inRange = require("./inRange");
+const inRange = require('./inRange');
 
-test.describe("Math/inRange", () => {
-  test("should test if number is in range", () => {
+test.describe('Math/inRange', () => {
+  test('should test if number is in range', () => {
     expect(inRange(3, 2, 4)).toBe(true);
 
     expect(inRange(3, 4, 2)).toBe(true);
@@ -15,11 +15,11 @@ test.describe("Math/inRange", () => {
     expect(inRange(4.5, 8.2, 2.1)).toBe(true);
 
     expect(() => {
-      return inRange("4.5", "8.2", "2.1");
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+      return inRange('4.5', '8.2', '2.1');
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
 
     expect(() => {
-      return inRange(4, "b8", "c2");
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+      return inRange(4, 'b8', 'c2');
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
   });
 });

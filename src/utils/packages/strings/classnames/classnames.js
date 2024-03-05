@@ -43,7 +43,10 @@ const classnames = (...args) => {
 
     if (typeof arg === 'string') {
       result += (result ? separator : '') + arg;
-    } else if (typeof arg === 'object' && Object.prototype.toString.call(arg) === '[object Object]') {
+    } else if (
+      typeof arg === 'object' &&
+      Object.prototype.toString.call(arg) === '[object Object]'
+    ) {
       for (const key in arg) {
         if (Object.prototype.hasOwnProperty.call(arg, key) && arg[key]) {
           result += (result ? separator : '') + key;

@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const min = require("./min");
+const min = require('./min');
 
-test.describe("Math/min", () => {
-  test("finds the smallest of zero or more numbers", () => {
+test.describe('Math/min', () => {
+  test('finds the smallest of zero or more numbers', () => {
     expect(min(5)).toBe(5);
 
     expect(min([1, -10, 1024, 1024.5, 29])).toBe(-10);
@@ -12,7 +12,7 @@ test.describe("Math/min", () => {
 
     expect(min(NaN, 10)).toBe(NaN);
 
-    expect(min("", "1")).toBe(0);
+    expect(min('', '1')).toBe(0);
 
     expect(min(0, true)).toBe(0);
 

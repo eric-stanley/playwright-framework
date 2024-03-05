@@ -64,13 +64,13 @@ const pickBy = (object, predicate, pickOwnKeys) => {
   const type = Object.prototype.toString.call(object);
 
   if (
-    typeof object !== 'object'
-    || object === null
-    || Array.isArray(object)
-    || type === '[object Set]'
-    || type === '[object WeakSet]'
-    || type === '[object Map]'
-    || type === '[object WeakMap]'
+    typeof object !== 'object' ||
+    object === null ||
+    Array.isArray(object) ||
+    type === '[object Set]' ||
+    type === '[object WeakSet]' ||
+    type === '[object Map]' ||
+    type === '[object WeakMap]'
   ) {
     throw new TypeError('Expected a plain object for first argument');
   }
@@ -89,7 +89,8 @@ const pickBy = (object, predicate, pickOwnKeys) => {
 
   for (const key in object) {
     const meetsCriteria = pickOwnKeys
-      ? Object.prototype.hasOwnProperty.call(object, key) && predicate(object[key], key)
+      ? Object.prototype.hasOwnProperty.call(object, key) &&
+        predicate(object[key], key)
       : predicate(object[key], key);
 
     if (meetsCriteria) {

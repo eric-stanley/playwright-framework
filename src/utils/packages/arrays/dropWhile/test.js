@@ -1,24 +1,24 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const dropWhile = require("./dropWhile");
+const dropWhile = require('./dropWhile');
 
-test.describe("Array/dropWhile", () => {
-  test("creates a slice of `array` excluding elements dropped from the beginning, until `predicate` returns falsy", () => {
+test.describe('Array/dropWhile', () => {
+  test('creates a slice of `array` excluding elements dropped from the beginning, until `predicate` returns falsy', () => {
     const books = [
       {
-        title: "Javascript Design Patterns",
+        title: 'Javascript Design Patterns',
         read: false,
       },
       {
-        title: "Programming Javascript Applications",
+        title: 'Programming Javascript Applications',
         read: false,
       },
       {
-        title: "JavaScript The Good Parts",
+        title: 'JavaScript The Good Parts',
         read: true,
       },
       {
-        title: "Eloquent Javascript",
+        title: 'Eloquent Javascript',
         read: false,
       },
     ];
@@ -26,14 +26,14 @@ test.describe("Array/dropWhile", () => {
     expect(
       dropWhile(books, (book) => {
         return !book.read;
-      })
+      }),
     ).toEqual([
       {
-        title: "JavaScript The Good Parts",
+        title: 'JavaScript The Good Parts',
         read: true,
       },
       {
-        title: "Eloquent Javascript",
+        title: 'Eloquent Javascript',
         read: false,
       },
     ]);
@@ -41,17 +41,17 @@ test.describe("Array/dropWhile", () => {
     expect(
       dropWhile(books, (book) => {
         return book.read;
-      })
+      }),
     ).toHaveLength(4);
 
     expect(() => {
       dropWhile(null, (book) => {
         return !book.read;
       });
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
 
     expect(() => {
       dropWhile(books, null);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
   });
 });

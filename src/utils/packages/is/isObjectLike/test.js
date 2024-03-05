@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isObjectLike = require("./isObjectLike");
+const isObjectLike = require('./isObjectLike');
 
-test.describe("is/isObjectLike", () => {
-  test("checks if a value is object-like", () => {
+test.describe('is/isObjectLike', () => {
+  test('checks if a value is object-like', () => {
     expect(isObjectLike({})).toBe(true);
 
     expect(isObjectLike(new Object())).toBe(true);
@@ -14,11 +14,11 @@ test.describe("is/isObjectLike", () => {
 
     expect(isObjectLike([1, 2, 3])).toBe(true);
 
-    expect(isObjectLike(new String("Hello world"))).toBe(true);
+    expect(isObjectLike(new String('Hello world'))).toBe(true);
 
     expect(isObjectLike(new Number(0))).toBe(true);
 
-    expect(isObjectLike(new RegExp("s+"))).toBe(true);
+    expect(isObjectLike(new RegExp('s+'))).toBe(true);
 
     expect(isObjectLike(/s+/)).toBe(true);
 
@@ -26,13 +26,13 @@ test.describe("is/isObjectLike", () => {
 
     expect(isObjectLike(new Set())).toBe(true);
 
-    expect(isObjectLike("Hello world")).toBe(false);
+    expect(isObjectLike('Hello world')).toBe(false);
 
     expect(isObjectLike(0)).toBe(false);
 
     expect(isObjectLike(function test() {})).toBe(false);
 
-    expect(isObjectLike(Symbol("foo"))).toBe(false);
+    expect(isObjectLike(Symbol('foo'))).toBe(false);
 
     expect(isObjectLike(true)).toBe(false);
 

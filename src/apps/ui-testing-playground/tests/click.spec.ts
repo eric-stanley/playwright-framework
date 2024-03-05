@@ -1,14 +1,14 @@
-import { test, describe } from "../fixtures";
-import * as homePageLocators from "../locators/home.locator";
-import * as clickPageLocators from "../locators/click.locator";
-import * as data from "../data/click.data.json";
+import { test, describe } from '../fixtures';
+import * as homePageLocators from '../locators/home.locator';
+import * as clickPageLocators from '../locators/click.locator';
+import * as data from '../data/click.data.json';
 
 test.beforeEach(async ({ homePage }) => {
   await homePage.navigateToUITestingPlayground();
 });
 
-describe("Click", () => {
-  test("Verify title in Click page", async ({
+describe('Click', () => {
+  test('Verify title in Click page', async ({
     homePage,
     commonPage,
     clickPage,
@@ -18,7 +18,7 @@ describe("Click", () => {
     await clickPage.verifyPageTitle();
   });
 
-  test("Verify buttons in Click page", async ({
+  test('Verify buttons in Click page', async ({
     homePage,
     commonPage,
     clickPage,

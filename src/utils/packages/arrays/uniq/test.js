@@ -1,16 +1,16 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const uniq = require("./uniq");
+const uniq = require('./uniq');
 
-test.describe("Array/uniq", () => {
-  test("removes duplicate values from an array", () => {
-    const obj = { foo: "bar" };
-    const arr = ["foo", "bar"];
+test.describe('Array/uniq', () => {
+  test('removes duplicate values from an array', () => {
+    const obj = { foo: 'bar' };
+    const arr = ['foo', 'bar'];
     const values = [
-      "a",
-      "a",
-      "b",
-      "2",
+      'a',
+      'a',
+      'b',
+      '2',
       2,
       obj,
       obj,
@@ -25,9 +25,9 @@ test.describe("Array/uniq", () => {
     ];
 
     expect(uniq(values)).toEqual([
-      "a",
-      "b",
-      "2",
+      'a',
+      'b',
+      '2',
       2,
       obj,
       arr,
@@ -38,6 +38,6 @@ test.describe("Array/uniq", () => {
 
     expect(() => {
       return uniq({});
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
   });
 });

@@ -1,11 +1,11 @@
-import { expect } from "@playwright/test";
-import { initConfig } from "./config.init";
+import { expect } from '@playwright/test';
+import { initConfig } from './config.init';
 
 const appName = process.env.APP_NAME;
 initConfig(appName);
 
-const appDir = "../../" + appName;
-export const appConfigPath = appDir + "/playwright.config.ts";
+const appDir = '../../' + appName;
+export const appConfigPath = appDir + '/playwright.config.ts';
 
 declare global {
   namespace PlaywrightTest {
@@ -20,12 +20,12 @@ expect.extend({
     const pass = received >= floor && received <= ceiling;
     if (pass) {
       return {
-        message: () => "passed",
+        message: () => 'passed',
         pass: true,
       };
     } else {
       return {
-        message: () => "failed",
+        message: () => 'failed',
         pass: false,
       };
     }

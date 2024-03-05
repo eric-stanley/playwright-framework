@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const negate = require("./negate");
+const negate = require('./negate');
 
-test.describe("Function/negate", () => {
-  test("should negate the result of the predicate function", () => {
+test.describe('Function/negate', () => {
+  test('should negate the result of the predicate function', () => {
     const isEven = (n) => n % 2 === 0;
 
     const numbers = [1, 2, 3, 4, 5, 6];
@@ -16,6 +16,6 @@ test.describe("Function/negate", () => {
 
     expect(() => {
       return negate();
-    }).toThrow(new TypeError("Expected a function for first argument"));
+    }).toThrow(new TypeError('Expected a function for first argument'));
   });
 });

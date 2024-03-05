@@ -23,8 +23,13 @@
  * // => TypeError
  */
 const removeSuffix = (subjectString, suffix) => {
-  if (typeof subjectString !== 'string' || typeof suffix !== 'string' && typeof suffix !== 'undefined') {
-    throw new TypeError('Expected a string for first and second argument argument');
+  if (
+    typeof subjectString !== 'string' ||
+    (typeof suffix !== 'string' && typeof suffix !== 'undefined')
+  ) {
+    throw new TypeError(
+      'Expected a string for first and second argument argument',
+    );
   }
 
   const strLen = subjectString.length;

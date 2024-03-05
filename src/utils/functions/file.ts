@@ -1,6 +1,6 @@
-import fs, { PathLike } from "fs";
-import * as fsPromises from "fs/promises";
-import path from "path";
+import fs, { PathLike } from 'fs';
+import * as fsPromises from 'fs/promises';
+import path from 'path';
 
 export const holdBeforeFileExists = async (filePath: any, timeout: number) => {
   timeout = timeout < 1000 ? 1000 : timeout;
@@ -29,7 +29,7 @@ export const holdBeforeFileExists = async (filePath: any, timeout: number) => {
 
 export const isFileUpdateComplete = async (
   filePath: PathLike,
-  timeout: number
+  timeout: number,
 ) => {
   const abortController = new AbortController();
   const { signal } = abortController;
@@ -39,7 +39,7 @@ export const isFileUpdateComplete = async (
 
   for await (const event of watchEventAsyncIterator) {
     console.log(
-      `'${event.eventType}' watch event was raised for ${event.filename}`
+      `'${event.eventType}' watch event was raised for ${event.filename}`,
     );
   }
 };
@@ -59,7 +59,7 @@ export const removeFilesInDirectory = async (directory: string) => {
 export const updateFile = async (
   jsonFilePath: string,
   key: string,
-  value: string
+  value: string,
 ) => {
   const jsonFile = require(jsonFilePath);
   jsonFile[key] = value;

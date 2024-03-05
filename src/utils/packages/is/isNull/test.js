@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isNull = require("./isNull");
+const isNull = require('./isNull');
 
-test.describe("is/isNull", () => {
-  test("checks if a valud is null", () => {
+test.describe('is/isNull', () => {
+  test('checks if a valud is null', () => {
     expect(isNull(null)).toBe(true);
 
     expect(isNull(100)).toBe(false);

@@ -32,7 +32,8 @@ const groupBy = (array, iteratee) => {
   }
 
   return array.reduce(function arrayAggregator(accumulator, item) {
-    const group = typeof iteratee === 'function' ? iteratee(item) : item[iteratee];
+    const group =
+      typeof iteratee === 'function' ? iteratee(item) : item[iteratee];
     accumulator[group] = accumulator[group] || [];
     accumulator[group].push(item);
     return accumulator;

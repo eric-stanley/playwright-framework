@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const pickBy = require("./pickBy");
+const pickBy = require('./pickBy');
 
-test.describe("Object/pickBy", () => {
-  test("creates an object composed of the object enumerable properties that predicate returns truthy for", () => {
+test.describe('Object/pickBy', () => {
+  test('creates an object composed of the object enumerable properties that predicate returns truthy for', () => {
     const o1 = Object.create({
       e: 5,
     });
@@ -14,7 +14,7 @@ test.describe("Object/pickBy", () => {
         enumerable: true,
       },
       b: {
-        value: "2",
+        value: '2',
         enumerable: true,
       },
       c: {
@@ -35,130 +35,130 @@ test.describe("Object/pickBy", () => {
 
     O.prototype.d = 4;
 
-    const o2 = new O(1, "2", 3);
+    const o2 = new O(1, '2', 3);
 
     expect(
       pickBy(o1, (value) => {
-        return typeof value === "number";
-      })
+        return typeof value === 'number';
+      }),
     ).toStrictEqual({ a: 1, c: 3 });
 
     expect(
       pickBy(
         o1,
         (value) => {
-          return typeof value === "number";
+          return typeof value === 'number';
         },
-        false
-      )
+        false,
+      ),
     ).toStrictEqual({ a: 1, c: 3, e: 5 });
 
     expect(
       pickBy(o2, (value) => {
-        return typeof value === "number";
-      })
+        return typeof value === 'number';
+      }),
     ).toStrictEqual({ a: 1, c: 3 });
 
     expect(
       pickBy(
         o2,
         (value) => {
-          return typeof value === "number";
+          return typeof value === 'number';
         },
-        false
-      )
+        false,
+      ),
     ).toStrictEqual({ a: 1, c: 3, d: 4 });
 
     expect(
       pickBy(o1, (value) => {
-        return typeof value === "function";
-      })
+        return typeof value === 'function';
+      }),
     ).toStrictEqual({});
 
     expect(
       pickBy(
         o1,
         (value) => {
-          return typeof value === "function";
+          return typeof value === 'function';
         },
-        false
-      )
+        false,
+      ),
     ).toStrictEqual({});
 
     expect(
       pickBy(
         o1,
         (_, key) => {
-          return key === "a";
+          return key === 'a';
         },
-        false
-      )
+        false,
+      ),
     ).toStrictEqual({ a: 1 });
 
     expect(
       pickBy(
         o1,
         (_, key) => {
-          return key === "d";
+          return key === 'd';
         },
-        false
-      )
+        false,
+      ),
     ).toStrictEqual({});
 
     expect(() => {
       return pickBy(null, (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(undefined, (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy([], (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(new Map(), (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(new WeakMap(), (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(new Set(), (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(new WeakSet(), (value) => {
-        return typeof value === "number";
+        return typeof value === 'number';
       });
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
       return pickBy(o1);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
 
     expect(() => {
       return pickBy(
         o1,
         (value) => {
-          return typeof value === "number";
+          return typeof value === 'number';
         },
-        0
+        0,
       );
-    }).toThrow(new TypeError("Expected a boolean for third argument"));
+    }).toThrow(new TypeError('Expected a boolean for third argument'));
   });
 });

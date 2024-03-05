@@ -16,4 +16,4 @@ export const mouseOverLink = 'a:has-text("Mouse Over")';
 export const nonBreakingSpaceLink = 'a:has-text("Non-Breaking Space")';
 export const overlappedElementLink = 'a:has-text("Overlapped Element")';
 export const shadowDOMLink = 'a:has-text("Shadow DOM")';
-export const spinner = "#spinner";
+export const spinner = '#spinner';

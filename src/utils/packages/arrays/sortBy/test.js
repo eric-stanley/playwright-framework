@@ -1,53 +1,53 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const sortBy = require("./sortBy");
+const sortBy = require('./sortBy');
 
-test.describe("Array/sortBy", () => {
+test.describe('Array/sortBy', () => {
   const people = [
-    { name: "Elena", age: "2" },
-    { name: "George", age: "33" },
-    { name: "Vasiliki", age: "32" },
-    { name: "Vaggelis", age: "30" },
+    { name: 'Elena', age: '2' },
+    { name: 'George', age: '33' },
+    { name: 'Vasiliki', age: '32' },
+    { name: 'Vaggelis', age: '30' },
   ];
 
-  test("sorts an array of objects by property", () => {
-    expect(sortBy(people, "name")).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "George", age: "33" },
-      { name: "Vaggelis", age: "30" },
-      { name: "Vasiliki", age: "32" },
+  test('sorts an array of objects by property', () => {
+    expect(sortBy(people, 'name')).toEqual([
+      { name: 'Elena', age: '2' },
+      { name: 'George', age: '33' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'Vasiliki', age: '32' },
     ]);
 
-    expect(sortBy(people, "name", false)).toEqual([
-      { name: "Vasiliki", age: "32" },
-      { name: "Vaggelis", age: "30" },
-      { name: "George", age: "33" },
-      { name: "Elena", age: "2" },
+    expect(sortBy(people, 'name', false)).toEqual([
+      { name: 'Vasiliki', age: '32' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'George', age: '33' },
+      { name: 'Elena', age: '2' },
     ]);
 
-    expect(sortBy(people, "name", null)).toEqual([
-      { name: "Vasiliki", age: "32" },
-      { name: "Vaggelis", age: "30" },
-      { name: "George", age: "33" },
-      { name: "Elena", age: "2" },
+    expect(sortBy(people, 'name', null)).toEqual([
+      { name: 'Vasiliki', age: '32' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'George', age: '33' },
+      { name: 'Elena', age: '2' },
     ]);
 
     expect(
-      sortBy(people, "age", true, (age) => {
+      sortBy(people, 'age', true, (age) => {
         return age * 2;
-      })
+      }),
     ).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "Vaggelis", age: "30" },
-      { name: "Vasiliki", age: "32" },
-      { name: "George", age: "33" },
+      { name: 'Elena', age: '2' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'Vasiliki', age: '32' },
+      { name: 'George', age: '33' },
     ]);
 
-    expect(sortBy(people, "age", true, {})).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "Vaggelis", age: "30" },
-      { name: "Vasiliki", age: "32" },
-      { name: "George", age: "33" },
+    expect(sortBy(people, 'age', true, {})).toEqual([
+      { name: 'Elena', age: '2' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'Vasiliki', age: '32' },
+      { name: 'George', age: '33' },
     ]);
 
     expect(
@@ -57,40 +57,40 @@ test.describe("Array/sortBy", () => {
           undefined,
           null,
           NaN,
-          "foo",
+          'foo',
           100,
           [1, 2, 3],
           () => void 0,
           new Set(),
           new Map(),
-          Symbol("foo"),
+          Symbol('foo'),
           new Date(),
         ],
-        "age"
-      )
+        'age',
+      ),
     ).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "Vaggelis", age: "30" },
-      { name: "Vasiliki", age: "32" },
-      { name: "George", age: "33" },
+      { name: 'Elena', age: '2' },
+      { name: 'Vaggelis', age: '30' },
+      { name: 'Vasiliki', age: '32' },
+      { name: 'George', age: '33' },
     ]);
 
-    expect(sortBy(people, "nonExistentProperty")).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "George", age: "33" },
-      { name: "Vasiliki", age: "32" },
-      { name: "Vaggelis", age: "30" },
+    expect(sortBy(people, 'nonExistentProperty')).toEqual([
+      { name: 'Elena', age: '2' },
+      { name: 'George', age: '33' },
+      { name: 'Vasiliki', age: '32' },
+      { name: 'Vaggelis', age: '30' },
     ]);
 
-    expect(sortBy(people, "nonExistentProperty", false)).toEqual([
-      { name: "Elena", age: "2" },
-      { name: "George", age: "33" },
-      { name: "Vasiliki", age: "32" },
-      { name: "Vaggelis", age: "30" },
+    expect(sortBy(people, 'nonExistentProperty', false)).toEqual([
+      { name: 'Elena', age: '2' },
+      { name: 'George', age: '33' },
+      { name: 'Vasiliki', age: '32' },
+      { name: 'Vaggelis', age: '30' },
     ]);
 
     expect(() => {
-      return sortBy({}, "age");
-    }).toThrow(new TypeError("Expected an array for first argument"));
+      return sortBy({}, 'age');
+    }).toThrow(new TypeError('Expected an array for first argument'));
   });
 });

@@ -1,25 +1,25 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isArrayLikeObject = require("./isArrayLikeObject");
+const isArrayLikeObject = require('./isArrayLikeObject');
 
-test.describe("is/isArrayLikeObject", () => {
+test.describe('is/isArrayLikeObject', () => {
   const noop = () => void 0;
   const dummy = (...args) => args;
 
-  test("check if value is array-like", () => {
+  test('check if value is array-like', () => {
     const args = dummy();
 
     expect(isArrayLikeObject(args)).toBe(true);
 
     expect(isArrayLikeObject([1, 2, 3])).toBe(true);
 
-    expect(isArrayLikeObject("abc")).toBe(false);
+    expect(isArrayLikeObject('abc')).toBe(false);
 
     expect(isArrayLikeObject(0)).toBe(false);
 
-    expect(isArrayLikeObject({ foo: "bar" })).toBe(false);
+    expect(isArrayLikeObject({ foo: 'bar' })).toBe(false);
 
-    expect(isArrayLikeObject({ foo: "bar", length: 10 })).toBe(true);
+    expect(isArrayLikeObject({ foo: 'bar', length: 10 })).toBe(true);
 
     expect(isArrayLikeObject(noop)).toBe(false);
 

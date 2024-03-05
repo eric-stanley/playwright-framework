@@ -31,19 +31,28 @@
  * // => 100
  */
 const clamp = (value, lower, upper) => {
-  if (typeof value !== 'number' || typeof lower !== 'number' || typeof upper !== 'number') {
+  if (
+    typeof value !== 'number' ||
+    typeof lower !== 'number' ||
+    typeof upper !== 'number'
+  ) {
     throw new TypeError('Expected all arguments to be numbers');
   }
 
-  if (lower !== lower) { // lower bound is not `NaN`
+  if (lower !== lower) {
+    // lower bound is not `NaN`
     lower = 0;
   }
 
-  if (upper !== upper) { // upper bound is not `NaN`
+  if (upper !== upper) {
+    // upper bound is not `NaN`
     upper = 0;
   }
 
-  return Math.min(Math.max(value, Math.min(lower, upper)), Math.max(lower, upper));
+  return Math.min(
+    Math.max(value, Math.min(lower, upper)),
+    Math.max(lower, upper),
+  );
 };
 
 module.exports = clamp;

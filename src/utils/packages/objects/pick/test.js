@@ -1,11 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const pick = require("./pick");
+const pick = require('./pick');
 
-test.describe("Object/pick", () => {
-  test("creates an object composed of the picked object properties", () => {
+test.describe('Object/pick', () => {
+  test('creates an object composed of the picked object properties', () => {
     const o1 = Object.create({
-      foo: "bar",
+      foo: 'bar',
     });
 
     Object.defineProperties(o1, {
@@ -26,65 +26,65 @@ test.describe("Object/pick", () => {
       this.c = c;
     }
 
-    O.prototype.foo = "bar";
+    O.prototype.foo = 'bar';
 
     const o2 = new O(1, 2, 3);
 
-    expect(pick(o1, ["a", "c", "foo"])).toStrictEqual({ a: 1, c: 3 });
-    expect(pick(o1, ["a", "c", "foo"], false)).toStrictEqual({
+    expect(pick(o1, ['a', 'c', 'foo'])).toStrictEqual({ a: 1, c: 3 });
+    expect(pick(o1, ['a', 'c', 'foo'], false)).toStrictEqual({
       a: 1,
       c: 3,
-      foo: "bar",
+      foo: 'bar',
     });
 
-    expect(pick(o2, ["a", "c", "foo"])).toStrictEqual({ a: 1, c: 3 });
-    expect(pick(o2, ["a", "c", "foo"], false)).toStrictEqual({
+    expect(pick(o2, ['a', 'c', 'foo'])).toStrictEqual({ a: 1, c: 3 });
+    expect(pick(o2, ['a', 'c', 'foo'], false)).toStrictEqual({
       a: 1,
       c: 3,
-      foo: "bar",
+      foo: 'bar',
     });
 
-    expect(pick(o1, ["d", "e"])).toStrictEqual({});
-    expect(pick(o1, ["d", "e"], false)).toStrictEqual({});
+    expect(pick(o1, ['d', 'e'])).toStrictEqual({});
+    expect(pick(o1, ['d', 'e'], false)).toStrictEqual({});
 
     expect(() => {
-      return pick(null, ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(null, ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(undefined, ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(undefined, ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(["a", "b", "c"], ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(['a', 'b', 'c'], ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(new Map(), ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(new Map(), ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(new WeakMap(), ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(new WeakMap(), ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(new Set(), ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(new Set(), ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(new WeakSet(), ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(new WeakSet(), ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(NaN, ["a"]);
-    }).toThrow(new TypeError("Expected a plain object for first argument"));
+      return pick(NaN, ['a']);
+    }).toThrow(new TypeError('Expected a plain object for first argument'));
 
     expect(() => {
-      return pick(o1, "a");
-    }).toThrow(new TypeError("Expected an array for second argument"));
+      return pick(o1, 'a');
+    }).toThrow(new TypeError('Expected an array for second argument'));
 
     expect(() => {
-      return pick(o1, ["a", "b"], 1);
-    }).toThrow(new TypeError("Expected a boolean for third argument"));
+      return pick(o1, ['a', 'b'], 1);
+    }).toThrow(new TypeError('Expected a boolean for third argument'));
   });
 });

@@ -21,7 +21,12 @@
  * numberFormat(123456789.12345, 3, ',', '.');
  * // => '123.456.789,123'
  */
-const numberFormat = (nNumber, nDecimals, sDecimalSeparator, sThousandSeparator) => {
+const numberFormat = (
+  nNumber,
+  nDecimals,
+  sDecimalSeparator,
+  sThousandSeparator,
+) => {
   if (typeof nNumber !== 'number') {
     throw new TypeError('Expected a number for first argument');
   }
@@ -31,13 +36,17 @@ const numberFormat = (nNumber, nDecimals, sDecimalSeparator, sThousandSeparator)
   }
 
   nNumber = nNumber.toFixed(~~nDecimals);
-  sThousandSeparator = typeof sThousandSeparator === 'string' ? sThousandSeparator : ',';
+  sThousandSeparator =
+    typeof sThousandSeparator === 'string' ? sThousandSeparator : ',';
 
   const parts = nNumber.split('.');
   const integerPart = parts[0];
   const fractionalPart = parts[1] ? (sDecimalSeparator || '.') + parts[1] : '';
 
-  return integerPart.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + sThousandSeparator) + fractionalPart;
+  return (
+    integerPart.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + sThousandSeparator) +
+    fractionalPart
+  );
 };
 
 module.exports = numberFormat;

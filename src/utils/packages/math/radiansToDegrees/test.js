@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const radiansToDegrees = require("./radiansToDegrees");
+const radiansToDegrees = require('./radiansToDegrees');
 
-test.describe("Math/radiansToDegrees", () => {
-  test("converts radians to degrees", () => {
+test.describe('Math/radiansToDegrees', () => {
+  test('converts radians to degrees', () => {
     expect(radiansToDegrees(0)).toBe(0);
 
     expect(radiansToDegrees(Math.PI / 2)).toBe(90);
@@ -17,7 +17,7 @@ test.describe("Math/radiansToDegrees", () => {
     expect(radiansToDegrees(NaN)).toBe(NaN);
 
     expect(() => {
-      return radiansToDegrees("3.14");
-    }).toThrow(new TypeError("Expected a number for first argument"));
+      return radiansToDegrees('3.14');
+    }).toThrow(new TypeError('Expected a number for first argument'));
   });
 });

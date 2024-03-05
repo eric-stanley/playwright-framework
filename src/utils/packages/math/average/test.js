@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const average = require("./average");
+const average = require('./average');
 
-test.describe("Math/average", () => {
-  test("calculates the average of a set of numbers", () => {
+test.describe('Math/average', () => {
+  test('calculates the average of a set of numbers', () => {
     expect(average(5, 10, 50, -45, 6, 7)).toBe(5.5);
     expect(average([5, 10, 50, -45, 6, 7])).toBe(5.5);
 
@@ -30,8 +30,8 @@ test.describe("Math/average", () => {
         undefined,
         false,
         true,
-        "foo"
-      )
+        'foo',
+      ),
     ).toBe(0);
     expect(
       average([
@@ -44,17 +44,17 @@ test.describe("Math/average", () => {
         undefined,
         false,
         true,
-        "foo",
-      ])
+        'foo',
+      ]),
     ).toBe(0);
 
-    expect(average(5, 4, null, true, "12", Infinity)).toBe(4.5);
-    expect(average([5, 4, null, true, "12", Infinity])).toBe(4.5);
+    expect(average(5, 4, null, true, '12', Infinity)).toBe(4.5);
+    expect(average([5, 4, null, true, '12', Infinity])).toBe(4.5);
 
     expect(average([], {})).toBe(0);
     expect(average([[], {}])).toBe(0);
 
-    expect(average("4", "2")).toBe(0);
-    expect(average(["4", "2"])).toBe(0);
+    expect(average('4', '2')).toBe(0);
+    expect(average(['4', '2'])).toBe(0);
   });
 });

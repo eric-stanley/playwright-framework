@@ -1,19 +1,19 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isIterable = require("./isIterable");
+const isIterable = require('./isIterable');
 
-test.describe("is/isIterable", () => {
+test.describe('is/isIterable', () => {
   function* generatorFunc() {
-    yield "foo";
+    yield 'foo';
   }
 
   const noop = () => void 0;
 
-  test("checks if a value is iterable)", () => {
+  test('checks if a value is iterable)', () => {
     expect(isIterable([])).toBe(true);
     expect(isIterable(new Map())).toBe(true);
     expect(isIterable(new Set())).toBe(true);
-    expect(isIterable("")).toBe(true);
+    expect(isIterable('')).toBe(true);
     expect(isIterable(generatorFunc())).toBe(true);
 
     // non iterables
@@ -25,10 +25,10 @@ test.describe("is/isIterable", () => {
     expect(isIterable(NaN)).toBe(false);
     expect(isIterable(Infinity)).toBe(false);
     expect(isIterable(true)).toBe(false);
-    expect(isIterable(Symbol("foo"))).toBe(false);
+    expect(isIterable(Symbol('foo'))).toBe(false);
   });
 
-  test("should throw `TypeError` if `Symbol` is not supported", () => {
+  test('should throw `TypeError` if `Symbol` is not supported', () => {
     const nativeCode = window.Symbol;
 
     window.Symbol = undefined; // emulate `Symbol` not being supported
@@ -37,14 +37,14 @@ test.describe("is/isIterable", () => {
       return isIterable([]);
     }).toThrow(
       new TypeError(
-        "Symbol or Symbol.iterator is not supported by your environment."
-      )
+        'Symbol or Symbol.iterator is not supported by your environment.',
+      ),
     );
 
     window.Symbol = nativeCode;
   });
 
-  test("should throw `TypeError` if `Symbol.iterator` is not supported", () => {
+  test('should throw `TypeError` if `Symbol.iterator` is not supported', () => {
     const nativeCode = window.Symbol;
 
     window.Symbol = {}; // emulate `Symbol.iterator` not being supported
@@ -53,8 +53,8 @@ test.describe("is/isIterable", () => {
       return isIterable([]);
     }).toThrow(
       new TypeError(
-        "Symbol or Symbol.iterator is not supported by your environment."
-      )
+        'Symbol or Symbol.iterator is not supported by your environment.',
+      ),
     );
 
     window.Symbol = nativeCode;

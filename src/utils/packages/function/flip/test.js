@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const flip = require("./flip.js");
+const flip = require('./flip.js');
 
-test.describe("flip", () => {
-  test("creates a new function that invokes the original function with its parameters reversed", () => {
+test.describe('flip', () => {
+  test('creates a new function that invokes the original function with its parameters reversed', () => {
     const args = (...args) => args;
     expect(args(1, 2, 3, 4)).toEqual([1, 2, 3, 4]);
     expect(flip(args)(1, 2, 3, 4)).toEqual([4, 3, 2, 1]);
@@ -15,6 +15,6 @@ test.describe("flip", () => {
 
     expect(() => {
       return flip(null);
-    }).toThrow(new TypeError("Expected a function for first argument"));
+    }).toThrow(new TypeError('Expected a function for first argument'));
   });
 });

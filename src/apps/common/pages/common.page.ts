@@ -1,15 +1,17 @@
-import type { Page, TestInfo } from "@playwright/test";
-import { matchScreenshot, takeScreenshot } from "@utils/base/web/screenshots";
-import * as actions from "@utils/base/web/actions";
-import { appConfigPath } from "@config";
+import type { Page, TestInfo } from '@playwright/test';
+import { matchScreenshot, takeScreenshot } from '@utils/base/web/screenshots';
+import * as actions from '@utils/base/web/actions';
+import { appConfigPath } from '@config';
 
 export default class CommonPage {
-  constructor(public page: Page, public workerInfo: TestInfo) {
-    const config = require(appConfigPath);
-  }
+  config = require(appConfigPath);
+  constructor(
+    public page: Page,
+    public workerInfo: TestInfo,
+  ) {}
 
   async verifySnapshot(name: string) {
-    !config.default.use.headless &&
+    !this.config.default.use.headless &&
       (await matchScreenshot(this.page, name, this.workerInfo));
   }
 
@@ -30,7 +32,11 @@ export default class CommonPage {
   }
 
   async verifyElementDoesNotExists(locator: string) {
-    await actions.verifyElementDoesNotExists(this.page, locator, this.workerInfo);
+    await actions.verifyElementDoesNotExists(
+      this.page,
+      locator,
+      this.workerInfo,
+    );
   }
 
   async verifyElementExists(locator: string) {
@@ -38,12 +44,6 @@ export default class CommonPage {
   }
 
   async captureScreenshot(name: string) {
-    await takeScreenshot(
-      this.page, 
-      name, 
-      true, 
-      this.workerInfo
-      )
+    await takeScreenshot(this.page, name, true, this.workerInfo);
   }
-  
 }

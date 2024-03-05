@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isEven = require("./isEven");
+const isEven = require('./isEven');
 
-test.describe("is/isEven", () => {
-  test("checks if value is even", () => {
+test.describe('is/isEven', () => {
+  test('checks if value is even', () => {
     expect(isEven(2)).toBe(true);
 
     expect(isEven(0)).toBe(true);

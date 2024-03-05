@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isFiniteNum = require("./isFiniteNum");
+const isFiniteNum = require('./isFiniteNum');
 
-test.describe("is/isFiniteNum", () => {
+test.describe('is/isFiniteNum', () => {
   const runTests = () => {
     expect(isFiniteNum(Infinity)).toBe(false);
 
@@ -12,7 +12,7 @@ test.describe("is/isFiniteNum", () => {
 
     expect(isFiniteNum(0)).toBe(true);
 
-    expect(isFiniteNum("0")).toBe(false);
+    expect(isFiniteNum('0')).toBe(false);
 
     expect(isFiniteNum(null)).toBe(false);
 
@@ -21,11 +21,11 @@ test.describe("is/isFiniteNum", () => {
     expect(isFiniteNum(2e64)).toBe(true);
   };
 
-  test("checks if a value is finite (Number.isFinite is supported)", () => {
+  test('checks if a value is finite (Number.isFinite is supported)', () => {
     runTests();
   });
 
-  test("checks if a value is finite (Number.isFinite is not supported)", () => {
+  test('checks if a value is finite (Number.isFinite is not supported)', () => {
     const nativeCode = Number.isFinite;
     Number.isFinite = null;
     runTests();

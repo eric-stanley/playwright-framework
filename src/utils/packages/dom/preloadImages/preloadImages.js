@@ -31,49 +31,58 @@
  *
  * preloadImages(images, success, fail, always);
  */
-const preloadImages = (images, successCallback, errorCallback, alwaysCallback) => {
+const preloadImages = (
+  images,
+  successCallback,
+  errorCallback,
+  alwaysCallback,
+) => {
   const list = [];
 
   if (!Array.isArray(images)) {
     throw new TypeError('Expected an array for first argument');
   }
 
-  const onloadSuccess = image => {
+  const onloadSuccess = (image) => {
     image.onload = function imagesLoadSuccess(event) {
       const index = list.indexOf(this);
 
       if (index !== -1) {
         list.splice(index, 1);
-        successCallback && successCallback({
-          event: event,
-          remainingImages: list,
-          imagesPaths: images,
-          currentImage: image
-        });
+        successCallback &&
+          successCallback({
+            event: event,
+            remainingImages: list,
+            imagesPaths: images,
+            currentImage: image,
+          });
       }
 
-      alwaysCallback && alwaysCallback({
-        remainingImages: list,
-        imagesPaths: images,
-        currentImage: image
-      });
+      alwaysCallback &&
+        alwaysCallback({
+          remainingImages: list,
+          imagesPaths: images,
+          currentImage: image,
+        });
     };
   };
 
-  const onLoadError = image => {
+  const onLoadError = (image) => {
     image.onerror = function imageLoadError(error) {
-      errorCallback && errorCallback({
-        error: error,
-        remainingImages: list,
-        imagesPaths: images,
-        currentImage: image
-      });
+      errorCallback &&
+        errorCallback({
+          error: error,
+          remainingImages: list,
+          imagesPaths: images,
+          currentImage: image,
+        });
 
-      alwaysCallback && alwaysCallback({
-        remainingImages: list,
-        imagesPaths: images,
-        currentImage: image
-      });
+      alwaysCallback &&
+        alwaysCallback({
+          remainingImages: list,
+          imagesPaths: images,
+          currentImage: image,
+        });
     };
   };
 

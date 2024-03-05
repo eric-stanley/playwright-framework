@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const drop = require("./drop");
+const drop = require('./drop');
 
-test.describe("Array/drop", () => {
-  test("creates a slice of array with n elements dropped from the beginning", () => {
+test.describe('Array/drop', () => {
+  test('creates a slice of array with n elements dropped from the beginning', () => {
     const arr = [1, 2, 3, 4, 5];
 
     expect(drop(arr)).toEqual([2, 3, 4, 5]);
@@ -26,10 +26,10 @@ test.describe("Array/drop", () => {
 
     expect(() => {
       return drop({}, 2);
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
 
     expect(() => {
-      return drop(arr, "2");
-    }).toThrow(new TypeError("Expected a number for second argument"));
+      return drop(arr, '2');
+    }).toThrow(new TypeError('Expected a number for second argument'));
   });
 });

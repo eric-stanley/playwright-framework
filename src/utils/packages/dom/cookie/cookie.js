@@ -74,7 +74,11 @@ module.exports = (function () {
     }
 
     const matches = document.cookie.match(
-      new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)')
+      new RegExp(
+        '(?:^|; )' +
+          name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') +
+          '=([^;]*)',
+      ),
     );
 
     return matches ? decodeURIComponent(matches[1]) : '';
@@ -98,13 +102,13 @@ module.exports = (function () {
     }
 
     setCookie(name, '', {
-      'max-age': -1
+      'max-age': -1,
     });
   }
 
   return {
     set: setCookie,
     get: getCookie,
-    remove: removeCookie
+    remove: removeCookie,
   };
-}());
+})();

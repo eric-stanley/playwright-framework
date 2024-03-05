@@ -1,18 +1,18 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isHexColor = require("./isHexColor");
+const isHexColor = require('./isHexColor');
 
-test.describe("is/isHexColor", () => {
-  test("checks if a value matches a hexadecimal color regular expression", () => {
-    expect(isHexColor("#f5f5f5")).toBe(true);
+test.describe('is/isHexColor', () => {
+  test('checks if a value matches a hexadecimal color regular expression', () => {
+    expect(isHexColor('#f5f5f5')).toBe(true);
 
-    expect(isHexColor("#9c0")).toBe(true);
+    expect(isHexColor('#9c0')).toBe(true);
 
-    expect(isHexColor("something")).toBe(false);
+    expect(isHexColor('something')).toBe(false);
 
     expect(isHexColor(333)).toBe(true);
 
-    expect(isHexColor("333")).toBe(true);
+    expect(isHexColor('333')).toBe(true);
 
     expect(isHexColor(6.6)).toBe(false);
 

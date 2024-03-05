@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const after = require("./after");
+const after = require('./after');
 
-test.describe("Function/after", () => {
+test.describe('Function/after', () => {
   test("should invoke a function after it's been called n times", () => {
     let count = 0;
     let result;
@@ -16,13 +16,13 @@ test.describe("Function/after", () => {
     expect(result).toEqual(6);
 
     expect(() => {
-      return after("five", () => {
+      return after('five', () => {
         return (count += 1);
       });
-    }).toThrow(new TypeError("Expected a number for first argument"));
+    }).toThrow(new TypeError('Expected a number for first argument'));
 
     expect(() => {
       return after(5);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
   });
 });

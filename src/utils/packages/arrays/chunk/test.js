@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const chunk = require("./chunk");
+const chunk = require('./chunk');
 
-test.describe("Array/chunk", () => {
-  test("creates an array of elements split into groups the length of size specified", () => {
+test.describe('Array/chunk', () => {
+  test('creates an array of elements split into groups the length of size specified', () => {
     expect(chunk([1, 2, 3, 4], 2)).toEqual([
       [1, 2],
       [3, 4],
@@ -23,47 +23,47 @@ test.describe("Array/chunk", () => {
     expect(() => {
       return chunk(
         {
-          a: "a",
-          b: "b",
+          a: 'a',
+          b: 'b',
         },
-        2
+        2,
       );
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
 
     expect(() => {
-      return chunk([1, 2, 3, 4], "2");
-    }).toThrow(new TypeError("Expected a number for second argument"));
+      return chunk([1, 2, 3, 4], '2');
+    }).toThrow(new TypeError('Expected a number for second argument'));
 
     expect(() => {
       return chunk([1, 2, 3, 4], -1);
     }).toThrow(
       new RangeError(
-        "Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument"
-      )
+        'Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument',
+      ),
     );
 
     expect(() => {
       return chunk([1, 2, 3, 4], Infinity);
     }).toThrow(
       new RangeError(
-        "Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument"
-      )
+        'Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument',
+      ),
     );
 
     expect(() => {
       return chunk([1, 2, 3, 4], Number.MAX_SAFE_INTEGER + 1);
     }).toThrow(
       new RangeError(
-        "Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument"
-      )
+        'Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument',
+      ),
     );
 
     expect(() => {
       return chunk([1, 2, 3, 4], NaN);
     }).toThrow(
       new RangeError(
-        "Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument"
-      )
+        'Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument',
+      ),
     );
   });
 });

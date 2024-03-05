@@ -1,2 +1,2 @@
-export const greenButton = "#greenButton";
-export const blueButton = "#blueButton";
+export const greenButton = '#greenButton';
+export const blueButton = '#blueButton';

@@ -17,7 +17,7 @@
  * escapeHTML('<p data-id="1">lorem ipsum</p>');
  * // => '&lt;p data-id&#x3D;&quot;1&quot;&gt;lorem ipsum&lt;&#x2F;p&gt;'
  */
-const escapeHTML = subjectString => {
+const escapeHTML = (subjectString) => {
   if (typeof subjectString !== 'string') {
     throw new TypeError('Expected a string for first argument');
   }
@@ -30,10 +30,10 @@ const escapeHTML = subjectString => {
     "'": '&#39;', // eslint-disable-line quotes
     '/': '&#x2F;',
     '`': '&#x60;',
-    '=': '&#x3D;'
+    '=': '&#x3D;',
   };
 
-  return subjectString.replace(/[&<>"'`=/]/g, tag => entityMap[tag] || tag);
+  return subjectString.replace(/[&<>"'`=/]/g, (tag) => entityMap[tag] || tag);
 };
 
 module.exports = escapeHTML;

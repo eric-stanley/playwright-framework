@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isObject = require("./isObject");
+const isObject = require('./isObject');
 
-test.describe("is/isObject", () => {
-  test("checks if a value is object", () => {
+test.describe('is/isObject', () => {
+  test('checks if a value is object', () => {
     expect(isObject({})).toBe(true);
 
     expect(isObject(new Object())).toBe(true);
@@ -16,19 +16,19 @@ test.describe("is/isObject", () => {
 
     expect(isObject([1, 2, 3])).toBe(true);
 
-    expect(isObject(new String("Hello world"))).toBe(true);
+    expect(isObject(new String('Hello world'))).toBe(true);
 
-    expect(isObject("Hello world")).toBe(false);
+    expect(isObject('Hello world')).toBe(false);
 
     expect(isObject(new Number(0))).toBe(true);
 
     expect(isObject(0)).toBe(false);
 
-    expect(isObject(new RegExp("s+"))).toBe(true);
+    expect(isObject(new RegExp('s+'))).toBe(true);
 
     expect(isObject(/s+/)).toBe(true);
 
-    expect(isObject(Symbol("foo"))).toBe(false);
+    expect(isObject(Symbol('foo'))).toBe(false);
 
     expect(isObject(new Map())).toBe(true);
 

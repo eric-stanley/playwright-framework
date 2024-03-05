@@ -1,18 +1,18 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isSymbol = require("./isSymbol");
+const isSymbol = require('./isSymbol');
 
-test.describe("is/isSymbol", () => {
-  test("checks if a value is classified as a Symbol primitive", () => {
+test.describe('is/isSymbol', () => {
+  test('checks if a value is classified as a Symbol primitive', () => {
     expect(isSymbol(Symbol())).toBe(true);
 
-    expect(isSymbol(Symbol("foo"))).toBe(true);
+    expect(isSymbol(Symbol('foo'))).toBe(true);
 
-    expect(isSymbol(Symbol.for("foo"))).toBe(true);
+    expect(isSymbol(Symbol.for('foo'))).toBe(true);
 
     expect(isSymbol(Symbol.iterator)).toBe(true);
 
-    expect(isSymbol("foo")).toBe(false);
+    expect(isSymbol('foo')).toBe(false);
 
     expect(isSymbol(123)).toBe(false);
 

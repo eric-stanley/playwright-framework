@@ -30,7 +30,11 @@
  * // => 0
  */
 const normalize = (value, min, max) => {
-  if (typeof value !== 'number' || typeof min !== 'number' || typeof max !== 'number') {
+  if (
+    typeof value !== 'number' ||
+    typeof min !== 'number' ||
+    typeof max !== 'number'
+  ) {
     throw new TypeError('Expected all arguments to be numbers');
   }
 

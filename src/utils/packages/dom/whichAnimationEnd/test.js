@@ -1,13 +1,13 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const whichAnimationEnd = require("./whichAnimationEnd");
+const whichAnimationEnd = require('./whichAnimationEnd');
 
-test.describe("dom/whichAnimationEnd", () => {
-  test("returns the animation end event name", () => {
+test.describe('dom/whichAnimationEnd', () => {
+  test('returns the animation end event name', () => {
     const values = [
-      "animationend",
-      "oAnimationEnd",
-      "webkitAnimationEnd",
+      'animationend',
+      'oAnimationEnd',
+      'webkitAnimationEnd',
       undefined,
     ];
     const exists = values.indexOf(whichAnimationEnd()) !== -1;

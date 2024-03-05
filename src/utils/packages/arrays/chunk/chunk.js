@@ -36,7 +36,9 @@ const chunk = (array, size) => {
   const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1;
 
   if (size <= 0 || size > MAX_SAFE_INTEGER || size !== size) {
-    throw new RangeError('Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument');
+    throw new RangeError(
+      'Expected a positive number lower than Number.MAX_SAFE_INTEGER for second argument',
+    );
   }
 
   size = Math.floor(size);
@@ -52,7 +54,7 @@ const chunk = (array, size) => {
   const result = [Math.ceil(len / size)];
 
   while (index < len) {
-    result[resIndex] = array.slice(index, index += size);
+    result[resIndex] = array.slice(index, (index += size));
     resIndex += 1;
   }
 

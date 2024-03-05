@@ -1,12 +1,12 @@
 export const titleCaseString = (data: string) =>
   data
     .toLowerCase()
-    .split(" ")
+    .split(' ')
     .map((word: string) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
-    .join(" ");
+    .join(' ');
 
 export const convertStringToArray = (para: any, removeSpaces = false) =>
-  removeSpaces ? [...para].filter((item) => item !== " ") : [...para];
+  removeSpaces ? [...para].filter((item) => item !== ' ') : [...para];
 
 export const countInstanceInArray = (arr: any[]) =>
   arr.reduce((obj: { [x: string]: number }, item: string | number) => {
@@ -21,7 +21,7 @@ export const sumOfAnArray = (arr: any[], initialValue = 0) =>
 export const inArrayOfObjects = (
   arr: any[],
   key: string | number,
-  value: any
+  value: any,
 ) => arr.find((ar: { [x: string]: any }) => ar[key] === value);
 
 export const findArrayIndex = (arr: any[], key: string | number, value: any) =>
@@ -31,5 +31,5 @@ export const getUniqueList = (arr: any[]) =>
   arr.filter(
     (ar: any, index: any, list: any[]) =>
       list.findIndex((p: any) => JSON.stringify(ar) === JSON.stringify(p)) ===
-      index
+      index,
   );

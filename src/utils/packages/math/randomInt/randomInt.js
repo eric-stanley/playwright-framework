@@ -19,7 +19,8 @@ const randomInt = (min, max) => {
   }
 
   return Math.floor(
-    Math.min(min, max) + Math.random() * (Math.max(min, max) - Math.min(min, max) + 1)
+    Math.min(min, max) +
+      Math.random() * (Math.max(min, max) - Math.min(min, max) + 1),
   );
 };
 

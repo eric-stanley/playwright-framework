@@ -1,1 +1,1 @@
-export const badButton = "#badButton";
+export const badButton = '#badButton';

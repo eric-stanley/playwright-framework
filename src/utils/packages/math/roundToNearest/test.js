@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const roundToNearest = require("./roundToNearest");
+const roundToNearest = require('./roundToNearest');
 
-test.describe("Math/roundToNearest", () => {
-  test("rounds a number to the nearest multiple of a value provided", () => {
+test.describe('Math/roundToNearest', () => {
+  test('rounds a number to the nearest multiple of a value provided', () => {
     expect(roundToNearest(100, 40)).toBe(120);
 
     expect(roundToNearest(140, 40)).toBe(160);
@@ -17,7 +17,7 @@ test.describe("Math/roundToNearest", () => {
     expect(roundToNearest(100, Infinity)).toBe(NaN);
 
     expect(() => {
-      return roundToNearest("100", "40");
-    }).toThrow(new TypeError("Expected all arguments to be numbers"));
+      return roundToNearest('100', '40');
+    }).toThrow(new TypeError('Expected all arguments to be numbers'));
   });
 });

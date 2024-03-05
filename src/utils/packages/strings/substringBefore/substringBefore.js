@@ -36,7 +36,9 @@ const substringBefore = (subjectString, characters, last) => {
     throw new TypeError('Expected a string for first and second argument');
   }
 
-  const index = !last ? subjectString.indexOf(characters) : subjectString.lastIndexOf(characters);
+  const index = !last
+    ? subjectString.indexOf(characters)
+    : subjectString.lastIndexOf(characters);
 
   return index !== -1 ? subjectString.substring(0, index) : '';
 };

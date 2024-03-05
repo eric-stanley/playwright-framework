@@ -27,7 +27,11 @@
  * // => -250
  */
 const lerp = (norm, min, max) => {
-  if (typeof norm !== 'number' || typeof min !== 'number' || typeof max !== 'number') {
+  if (
+    typeof norm !== 'number' ||
+    typeof min !== 'number' ||
+    typeof max !== 'number'
+  ) {
     throw new TypeError('Expected all arguments to be numbers');
   }
 

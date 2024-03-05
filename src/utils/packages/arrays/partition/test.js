@@ -1,20 +1,20 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const partition = require("./partition");
+const partition = require('./partition');
 
-test.describe("Array/partition", () => {
-  test("creates an array of elements split into two groups", () => {
+test.describe('Array/partition', () => {
+  test('creates an array of elements split into two groups', () => {
     const users = [
       {
-        name: "John",
+        name: 'John',
         isAdmin: true,
       },
       {
-        name: "George",
+        name: 'George',
         isAdmin: false,
       },
       {
-        name: "Alice",
+        name: 'Alice',
         isAdmin: true,
       },
     ];
@@ -38,18 +38,18 @@ test.describe("Array/partition", () => {
 
     expect(admins).toEqual([
       {
-        name: "John",
+        name: 'John',
         isAdmin: true,
       },
       {
-        name: "Alice",
+        name: 'Alice',
         isAdmin: true,
       },
     ]);
 
     expect(nonAdmins).toEqual([
       {
-        name: "George",
+        name: 'George',
         isAdmin: false,
       },
     ]);
@@ -57,7 +57,7 @@ test.describe("Array/partition", () => {
     expect(
       partition([], (element) => {
         return element.isAdmin;
-      })
+      }),
     ).toEqual([[], []]);
 
     expect(partition([1, 2, 3])).toEqual([[1, 2, 3], []]);
@@ -66,10 +66,10 @@ test.describe("Array/partition", () => {
       return partition(null, (element) => {
         return element.isAdmin;
       });
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
 
     expect(() => {
       return partition(users, null);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
   });
 });

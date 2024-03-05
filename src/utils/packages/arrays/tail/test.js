@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const tail = require("./tail");
+const tail = require('./tail');
 
-test.describe("Array/tail", () => {
-  test("Gets all but the first element of array", () => {
+test.describe('Array/tail', () => {
+  test('Gets all but the first element of array', () => {
     expect(tail([1, 2, 3])).toEqual([2, 3]);
 
     expect(tail([1])).toEqual([]);
@@ -12,6 +12,6 @@ test.describe("Array/tail", () => {
 
     expect(() => {
       return tail({});
-    }).toThrow(new TypeError("Expected an array for first argument"));
+    }).toThrow(new TypeError('Expected an array for first argument'));
   });
 });

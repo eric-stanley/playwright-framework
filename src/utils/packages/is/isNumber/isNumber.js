@@ -35,8 +35,11 @@
  * isNumber(NaN);
  * // => true
  */
-const isNumber = value => {
-  return typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]';
+const isNumber = (value) => {
+  return (
+    typeof value === 'number' ||
+    Object.prototype.toString.call(value) === '[object Number]'
+  );
 };
 
 module.exports = isNumber;

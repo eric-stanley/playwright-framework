@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const before = require("./before");
+const before = require('./before');
 
-test.describe("Function/before", () => {
-  test("should invoke a function up to 5 times", () => {
+test.describe('Function/before', () => {
+  test('should invoke a function up to 5 times', () => {
     let count = 0;
     let result;
 
@@ -16,13 +16,13 @@ test.describe("Function/before", () => {
     expect(result).toEqual(5);
 
     expect(() => {
-      return before("five", () => {
+      return before('five', () => {
         return (count += 1);
       });
-    }).toThrow(new TypeError("Expected a number for first argument"));
+    }).toThrow(new TypeError('Expected a number for first argument'));
 
     expect(() => {
       return before(5);
-    }).toThrow(new TypeError("Expected a function for second argument"));
+    }).toThrow(new TypeError('Expected a function for second argument'));
   });
 });

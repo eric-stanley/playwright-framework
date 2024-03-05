@@ -1,16 +1,16 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-const isNumber = require("./isNumber");
+const isNumber = require('./isNumber');
 
-test.describe("is/isNumber", () => {
-  test("checks if a value is number", () => {
+test.describe('is/isNumber', () => {
+  test('checks if a value is number', () => {
     expect(isNumber(404)).toBe(true);
 
     expect(isNumber(new Date().getTime())).toBe(true);
 
     expect(isNumber(NaN)).toBe(true);
 
-    expect(isNumber("302")).toBe(false);
+    expect(isNumber('302')).toBe(false);
 
     expect(isNumber(null)).toBe(false);
 
