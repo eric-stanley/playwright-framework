@@ -37,10 +37,12 @@ export default class CommonPage {
       locator,
       this.workerInfo,
     );
+    await this.waitForNetworkIdle();
   }
 
   async verifyElementExists(locator: string) {
     await actions.verifyElementExists(this.page, locator, this.workerInfo);
+    await this.waitForNetworkIdle();
   }
 
   async captureScreenshot(name: string) {
