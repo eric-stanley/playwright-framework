@@ -15,11 +15,13 @@ const globalSetup = async (config: FullConfig) => {
     'apps',
     process.env.APP_NAME,
     'reports',
+    'allure',
+    'allure-result',
   );
 
   !fs.existsSync(reportPath) && fs.mkdirSync(reportPath, { recursive: true });
   process.env.REPORT_PATH = reportPath;
-  const allureReportPath = path.join(reportPath, 'allure', 'allure-result');
+  const allureReportPath = path.join(reportPath);
   removeFilesInDirectory(allureReportPath);
 };
 
