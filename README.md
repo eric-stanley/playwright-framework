@@ -13,13 +13,13 @@ For fast run, fork the [repo](https://github.com/inflectra/ui-test-automation-pl
 
 In the project directory, you can run:
 
-| _Command_                        | _Description_                                                                           |
-| -------------------------------- | --------------------------------------------------------------------------------------- |
-| <code>**yarn**</code>            | to install dependencies (**_always run this first before running any other commands_**) |
-| <code>**yarn test**</code>       | to run tests                                                                            |
-| <code>**yarn test:debug**</code> | to run tests in `debug` mode                                                            |
-| <code>**yarn report**</code>     | to serve default report                                                                 |
-| <code>**yarn allure**</code>     | to serve allure report                                                                  |
+| _Command_                                        | _Description_                                                                           |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| <code>**yarn && yarn playwright install**</code> | to install dependencies (**_always run this first before running any other commands_**) |
+| <code>**yarn test**</code>                       | to run tests                                                                            |
+| <code>**yarn test:debug**</code>                 | to run tests in `debug` mode                                                            |
+| <code>**yarn report**</code>                     | to serve default report                                                                 |
+| <code>**yarn allure**</code>                     | to serve allure report                                                                  |
 
 **:exclamation:_Note:_** By default the tests are run in <code>headless</code> mode. Screenshots will not be captured in this mode as it causes problems during validation between headless and headed mode. For validating screenshots, change the below in <code>src/apps/ui-testing-playground/playwright.config.js</code>
 
