@@ -329,8 +329,8 @@ export const isJSONEqual = (page: Page, obj1, obj2, workerInfo: TestInfo) =>
   );
 
 export const deBounceDOM = async (page) => {
-  const pollDelay = 500;
-  const stableDelay = 1000;
+  const pollDelay = 50;
+  const stableDelay = 350;
   let markupPrevious = '';
   const timerStart = new Date();
   let isStable = false;
